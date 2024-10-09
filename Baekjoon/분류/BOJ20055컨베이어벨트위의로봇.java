@@ -1,9 +1,9 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+// 국민은행 대비 구현 1
 public class BOJ20055컨베이어벨트위의로봇 {
 
     static int[][] num;
