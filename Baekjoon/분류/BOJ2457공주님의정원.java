@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+// 그리디 알고리즘, 정렬
 public class BOJ2457공주님의정원 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
