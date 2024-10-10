@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+//그리디 알고리즘
 public class BOJ1700멀티탭스케줄링 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
