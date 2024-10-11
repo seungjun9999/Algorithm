@@ -11,8 +11,8 @@ public class BOJ1700멀티탭스케줄링 {
         int k = Integer.parseInt(st.nextToken());
         int cnt = 0;
         int result = 0;
-        int[] loc = new int[k];
-        boolean[] con = new boolean[k + 1];
+        int[] loc = new int[k]; // 현재 꽂아야할 콘센트
+        boolean[] con = new boolean[k + 1]; // 꽂혀있는지
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < k; i++) {
