@@ -28,7 +28,7 @@ public class BOJ2457공주님의정원 {
                 }
                 return o1[0] - o2[0];
             }
-        });
+        }); // 2차원 배열 정렬
 
         while (mys < 1201) {
 
