@@ -2,7 +2,7 @@ import java.io.*;
 
 public class BOJ2138전구와스위치 {
     static int n, cnt1 = 0, cnt2 = 1;
-    static String arr, first, second;
+    static String arr;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -37,16 +37,16 @@ public class BOJ2138전구와스위치 {
                 change(sw2, i - 1);
                 cnt2++;
             }
-            if (check(sw1, sw2)) {
-                if (first.equals(second)) {
-                    System.out.println(Math.min(cnt1, cnt2));
-                } else if (first.equals(arr)) {
-                    System.out.println(cnt1);
-                } else {
-                    System.out.println(cnt2);
-                }
-                return;
+        }
+        if (check(sw1, sw2)) {
+            if (sw1[n - 1] == sw2[n - 1]) {
+                System.out.println(Math.min(cnt1, cnt2));
+            } else if (sw1[n - 1] == arr.charAt(n - 1)) {
+                System.out.println(cnt1);
+            } else {
+                System.out.println(cnt2);
             }
+            return;
         }
         System.out.println(-1);
     }
@@ -64,9 +64,7 @@ public class BOJ2138전구와스위치 {
     }
 
     static boolean check(char[] sw1, char[] sw2) {
-        first = String.valueOf(sw1);
-        second = String.valueOf(sw2);
-        if (!first.equals(arr) && !second.equals(arr)) {
+        if (sw1[n - 1] != arr.charAt(n - 1) && sw2[n - 1] != arr.charAt(n - 1)) {
             return false;
         }
         return true;
