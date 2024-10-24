@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int start, end, mid, result;
+    static int start = 0, end = 0, mid, result;
     static long sum;
 
     public static void main(String[] args) throws IOException {
@@ -14,10 +14,8 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
             tree[i] = Integer.parseInt(st.nextToken());
+            end = Math.max(end, tree[i]);
         }
-        Arrays.sort(tree);
-        start = 0;
-        end = tree[n - 1];
         while (start < end) {
             sum = 0;
             mid = (start + end) / 2;
@@ -25,8 +23,6 @@ public class Main {
                 int cut = tree[i] - mid;
                 if (cut > 0) {
                     sum += cut;
-                } else {
-                    break;
                 }
             }
             if (sum > m) {
