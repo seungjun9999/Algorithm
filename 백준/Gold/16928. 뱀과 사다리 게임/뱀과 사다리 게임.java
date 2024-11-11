@@ -30,7 +30,6 @@ public class Main {
             num[a] = b;
         }
         q.offer(new Node(1, 0));
-        visited[1] = true;
         System.out.println(bfs());
     }
 
