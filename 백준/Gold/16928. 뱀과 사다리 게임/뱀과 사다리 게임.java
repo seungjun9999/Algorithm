@@ -38,14 +38,14 @@ public class Main {
             Node now = q.poll();
             for (int i = 1; i <= 6; i++) {
                 int go = now.x + i;
-                if(go == 100){
-                    return now.cnt+1;
+                if (go == 100) {
+                    return now.cnt + 1;
                 }
-                if (go <= 100 && !visited[go]){
-                    if (num[go]==0){
-                        q.offer(new Node(go, now.cnt+1));
-                    }else{
-                        q.offer(new Node(num[go], now.cnt+1));
+                if (go <= 100 && !visited[go]) {
+                    if (num[go] == 0) {
+                        q.offer(new Node(go, now.cnt + 1));
+                    } else {
+                        q.offer(new Node(num[go], now.cnt + 1));
                         visited[num[go]] = true;
                     }
                     visited[go] = true;
