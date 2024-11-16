@@ -5,7 +5,7 @@ public class Main {
     static int n, m;
     static int[] num;
     static boolean[] visited; // 불린
-    static StringBuilder sb;
+    static StringBuilder sb; // 전역선언
     static ArrayList<Integer> list = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
