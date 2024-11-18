@@ -27,7 +27,7 @@ public class Main {
         System.out.print(sb);
     }
 
-    static void dfs(int a, int cnt) {
+    static void dfs(int a, int cnt) { // 방문처리
         if (cnt == m) {
             for (int i = 0; i < m; i++) {
                 sb.append(list.get(i)).append(" ");
@@ -37,7 +37,7 @@ public class Main {
             return;
         }
         for (int i = a; i < n; i++) {
-            if(!visited[i]){
+            if (!visited[i]) {
                 list.add(num[i]);
                 visited[i] = true;
                 dfs(a, cnt + 1);
