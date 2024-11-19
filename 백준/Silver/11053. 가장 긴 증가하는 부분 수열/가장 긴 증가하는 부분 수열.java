@@ -15,24 +15,24 @@ public class Main {
         }
         list.add(num[0]);
         for (int i = 1; i < n; i++) {
-            if(list.get(list.size()-1) < num[i] ){
+            if (list.get(list.size() - 1) < num[i]) {
                 list.add(num[i]);
-            }else {
-                list.set(bs(num[i]),num[i]);
+            } else {
+                list.set(bs(num[i]), num[i]);
             }
         }
         System.out.println(list.size());
     }
 
-    static int bs(int t){
+    static int bs(int t) { // 이분탐색
         int start = 0;
         int end = list.size();
         int result = 0;
-        while(start<end){
-            int mid = (start + end) /2;
-            if(list.get(mid) < t){
-                start = mid+1;
-            }else{
+        while (start < end) {
+            int mid = (start + end) / 2;
+            if (list.get(mid) < t) {
+                start = mid + 1;
+            } else {
                 end = mid;
                 result = mid;
             }
