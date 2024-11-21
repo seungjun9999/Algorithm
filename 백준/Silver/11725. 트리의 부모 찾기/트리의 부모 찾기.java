@@ -31,7 +31,7 @@ public class Main {
         for (int i = 2; i <= n; i++) {
             sb.append(num[i]).append("\n");
         }
-        // sb로 뽑는게 무조건 빠름
+        // sb로 뽑는게 무조건 빠름!
         System.out.print(sb);
     }
 
