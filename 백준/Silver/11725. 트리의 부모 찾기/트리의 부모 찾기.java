@@ -14,6 +14,7 @@ public class Main {
         visited = new boolean[n + 1];
         num = new int[n + 1];
         StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n + 1; i++) {
             list.add(new ArrayList<>());
         }
@@ -28,8 +29,9 @@ public class Main {
         visited[1] = true;
         bfs();
         for (int i = 2; i <= n; i++) {
-            System.out.println(num[i]);
+            sb.append(num[i]).append("\n");
         }
+        System.out.print(sb);
     }
 
     static void bfs() {
