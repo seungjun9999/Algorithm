@@ -3,9 +3,8 @@ import java.util.*;
 
 public class Main {
     static int n, m;
-    static int[] num;
+    static int[] num, result;
     static boolean[] visited;
-    static ArrayList<Integer> list = new ArrayList<>();
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
@@ -14,6 +13,7 @@ public class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
         num = new int[n];
+        result = new int[m];
         visited = new boolean[n];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
@@ -27,7 +27,7 @@ public class Main {
     static void backt(int cnt) {
         if (cnt == m) {
             for (int i = 0; i < m; i++) {
-                sb.append(list.get(i)).append(" ");
+                sb.append(result[i]).append(" ");
             }
             sb.append("\n");
             return;
@@ -36,10 +36,9 @@ public class Main {
         for (int i = 0; i < n; i++) {
             if (!visited[i] && num[i] != t) {
                 visited[i] = true;
-                list.add(num[i]);
+                result[cnt] = num[i];
                 t = num[i];
                 backt(cnt + 1);
-                list.remove(list.size() - 1);
                 visited[i] = false;
             }
         }
