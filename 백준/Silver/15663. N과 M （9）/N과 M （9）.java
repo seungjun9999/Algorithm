@@ -5,7 +5,6 @@ public class Main {
     static int n, m;
     static int[] num;
     static boolean[] visited;
-    static LinkedHashMap<String, Integer> hm = new LinkedHashMap<>();
     static ArrayList<Integer> list = new ArrayList<>();
     static StringBuilder sb = new StringBuilder();
 
@@ -22,25 +21,23 @@ public class Main {
         }
         Arrays.sort(num);
         backt(0);
-        for (String key : hm.keySet()) {
-            sb.append(key).append("\n");
-        }
         System.out.print(sb);
     }
 
     static void backt(int cnt) {
         if (cnt == m) {
-            String arr = "";
-            for (int i = 0; i < list.size(); i++) {
-                arr += (list.get(i).toString()) + " ";
+            for (int i = 0; i < m; i++) {
+                sb.append(list.get(i)).append(" ");
             }
-            hm.put(arr, hm.getOrDefault(arr, 1));
+            sb.append("\n");
             return;
         }
+        int t = 0;
         for (int i = 0; i < n; i++) {
-            if (!visited[i]) {
+            if (!visited[i] && num[i] != t) {
                 visited[i] = true;
                 list.add(num[i]);
+                t = num[i];
                 backt(cnt + 1);
                 list.remove(list.size() - 1);
                 visited[i] = false;
