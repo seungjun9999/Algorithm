@@ -17,7 +17,7 @@ public class Main {
 
         @Override
         public int compareTo(Node o1) {
-            return this.cost - o1.cost;
+            return this.cost - o1.cost; // min 부터
         }
     }
 
@@ -67,7 +67,8 @@ public class Main {
 
         while (!pq.isEmpty()) {
             Node now = pq.poll();
-            if (dist[now.a] < now.cost) continue;
+            if (dist[now.a] < now.cost)
+                continue;
             cnt += item[now.a];
 
             for (int i = 0; i < list.get(now.a).size(); i++) {
