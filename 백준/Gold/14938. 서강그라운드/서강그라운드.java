@@ -17,7 +17,7 @@ public class Main {
 
         @Override
         public int compareTo(Node o1) {
-            return this.cost - o1.cost; // min 부터
+            return this.cost - o1.cost; // min 부터, 반대면 max 부터
         }
     }
 
