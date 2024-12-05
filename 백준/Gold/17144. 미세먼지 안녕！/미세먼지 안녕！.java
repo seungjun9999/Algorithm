@@ -30,6 +30,7 @@ public class Main {
             num = map;
             clean();
         }
+        // 청정기 빼고
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
                 if (num[i][j] > 0) {
