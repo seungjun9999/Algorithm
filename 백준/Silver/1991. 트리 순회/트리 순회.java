@@ -37,7 +37,7 @@ public class Main {
     }
 
     static void insertNode(Node hd) {
-        if (hd.value == root) {
+        if (hd.value == root) { // 없으면 바로 추가
             hd.left = (left == '.' ? null : new Node(left, null, null));
             hd.right = (right == '.' ? null : new Node(right, null, null));
         } else {
