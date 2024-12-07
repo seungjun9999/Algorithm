@@ -41,6 +41,7 @@ public class Main {
             hd.left = (left == '.' ? null : new Node(left, null, null));
             hd.right = (right == '.' ? null : new Node(right, null, null));
         } else {
+            // 있으면 왼쪽 오른쪽
             if (hd.left != null) {
                 insertNode(hd.left);
             }
