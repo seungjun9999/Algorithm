@@ -36,7 +36,7 @@ public class Main {
         return true;
     }
 
-    // 미친 스피드런 방법 ㅋㅋ;;;
+    // 미친 스피드런 방법 ㅋㅋ;;; 정답 바로 출력 ..
     // public static void main(String[] args) throws IOException {
     // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     // int N = Integer.parseInt(br.readLine());
