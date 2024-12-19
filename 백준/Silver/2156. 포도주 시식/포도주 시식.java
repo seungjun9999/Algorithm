@@ -18,8 +18,8 @@ public class Main {
             result = dp[2];
         }
         for (int i = 3; i <= n; i++) {
-            dp[i] = Math.max(Math.max(dp[i - 3] + num[i - 1], dp[i - 2]) + num[i], dp[i - 1]);
-            result = Math.max(dp[i], result);
+            dp[i] = Math.max(Math.max(dp[i - 3] + num[i - 1], dp[i - 2]) + num[i], dp[i - 1]); // dp 점화식 찾기 oox,
+                ult = Math.max(dp[i], result);
         }
         System.out.println(result);
     }
