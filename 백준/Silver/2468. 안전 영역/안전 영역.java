@@ -5,8 +5,8 @@ public class Main {
     static int n, hmax = 0, hmin = 101, cnt, result = 0;
     static int[][] num;
     static boolean[][] visited;
-    static int[] dx = {1, 0, -1, 0};
-    static int[] dy = {0, 1, 0, -1};
+    static int[] dx = { 1, 0, -1, 0 };
+    static int[] dy = { 0, 1, 0, -1 };
     static ArrayDeque<int[]> dq = new ArrayDeque<>();
 
     public static void main(String[] args) throws IOException {
@@ -21,7 +21,7 @@ public class Main {
                 hmin = Math.min(hmin, num[i][j]);
             }
         }
-        for (int i = hmin-1; i <= hmax; i++) {
+        for (int i = hmin - 1; i <= hmax; i++) { // 아무지역도 안잠길 수 있음
             visited = new boolean[n][n];
             cnt = 0;
             for (int j = 0; j < n; j++) {
@@ -29,7 +29,7 @@ public class Main {
                     if (num[j][k] > i && !visited[j][k]) {
                         cnt++;
                         visited[j][k] = true;
-                        dq.offer(new int[]{j, k});
+                        dq.offer(new int[] { j, k });
                         bfs(i);
                     }
                 }
@@ -47,7 +47,7 @@ public class Main {
                 int y = dy[i] + where[1];
                 if (check(x, y) && num[x][y] > h && !visited[x][y]) {
                     visited[x][y] = true;
-                    dq.offer(new int[]{x, y});
+                    dq.offer(new int[] { x, y });
                 }
             }
         }
