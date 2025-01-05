@@ -41,12 +41,9 @@ public class Main {
                     sum -= copy[i];
                 }
             }
-            if (cnt > 0 || sum > 0) {
+            if (sum >= 0) {
                 start = mid + 1;
                 result = mid;
-            }else if(cnt==0&&sum==0){
-                result = mid;
-                return;
             }else{
                 end = mid-1;
             }
