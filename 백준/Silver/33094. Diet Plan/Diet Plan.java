@@ -2,9 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int n, m, k, result = 0;
+    static int n, m, k, result = 0, start, end;
     static int[] num;
-    static PriorityQueue<Integer> pq = new PriorityQueue(Collections.reverseOrder());
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,33 +16,40 @@ public class Main {
         for (int i = 0; i < n; i++) {
             num[i] = Integer.parseInt(st.nextToken());
         }
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j <= i; j++) {
-                pq.offer(num[j]);
-            }
-            int s = check(m, k, pq.size());
-            if (s == 0) {
-                break;
-            } else {
-                result = s;
-            }
-        }
+        start = 0;
+        end = n;
+        plan();
+
         System.out.println(result);
     }
 
-    static int check(int sum, int cnt, int size) {
-        while (!pq.isEmpty()) {
-            if (cnt != 0) {
-                pq.poll();
-                cnt--;
-            } else {
-                sum -= pq.poll();
+    static void plan() {
+        while (start <= end) {
+            int cnt = k;
+            int sum = m;
+
+            int mid = (start + end) / 2;
+            Integer[] copy = new Integer[mid];
+            for (int i = 0; i < mid; i++) {
+                copy[i] = num[i];
             }
-        }
-        if (sum >= 0) {
-            return size;
-        } else {
-            return 0;
+            Arrays.sort(copy, Collections.reverseOrder());
+            for (int i = 0; i < mid; i++) {
+                if (cnt > 0) {
+                    cnt--;
+                } else {
+                    sum -= copy[i];
+                }
+            }
+            if (cnt > 0 || sum > 0) {
+                start = mid + 1;
+                result = mid;
+            }else if(cnt==0&&sum==0){
+                result = mid;
+                return;
+            }else{
+                end = mid-1;
+            }
         }
     }
 }
