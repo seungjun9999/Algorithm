@@ -3,6 +3,7 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] numbers) {
+        // 방법 1
         TreeSet<Integer> ts = new TreeSet<>();
         int n = numbers.length;
         for(int i=0;i<n-1;i++){
@@ -16,17 +17,14 @@ class Solution {
         }
         return result;
         
-        // int[] answer = {};
+        // 방법 2
+        // List<Integer> answer = new ArrayList<>();
         // int n = numbers.length;
-        // int cnt=0;
         // for(int i = 0; i < n-1; i++){
         //     for(int j = i+1; j < n; j++){
-        //         answer[cnt] = numbers[i] + numbers[j] ;
-        //         cnt++;
+        //         answer.add( numbers[i] + numbers[j] );
         //     }
         // }
-        // Integer[] array = Arrays.stream(answer).boxed().distinct().toArray(Integer[]::new);
-        // Arrays.sort(array);
-        // return Arrays.stream(array).mapToInt(Integer::intValue).toArray();
+        // return answer.stream().sorted().distinct().mapToInt(Integer::intValue).toArray();
     }
 }
