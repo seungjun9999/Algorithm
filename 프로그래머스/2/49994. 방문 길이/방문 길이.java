@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Solution {
     public int solution(String dirs) {
         int answer = 0;
@@ -11,29 +10,29 @@ class Solution {
             if(go=='U'){
                 int recent = my[0]+1;
                 if(check(recent)){
-                    hs.add(my[0]+""+my[1]+""+recent+""+my[1]);
-                    hs.add(recent+""+my[1]+""+my[0]+""+my[1]);
+                    hs.add(""+my[0]+my[1]+recent+my[1]);
+                    hs.add(""+recent+my[1]+my[0]+my[1]);
                     my = new int[]{recent,my[1]};
                 }
             }else if(go=='D'){
                 int recent = my[0]-1;
                 if(check(recent) ){
-                    hs.add(my[0]+""+my[1]+""+recent+""+my[1]);
-                    hs.add(recent+""+my[1]+""+my[0]+""+my[1]);
+                    hs.add(""+my[0]+my[1]+recent+my[1]);
+                    hs.add(""+recent+my[1]+my[0]+my[1]);
                     my = new int[]{recent,my[1]};
                 }
             }else if(go=='R'){
                 int recent = my[1]+1;
                 if(check(recent)){
-                    hs.add(my[0]+""+my[1]+""+my[0]+""+recent);
-                    hs.add(my[0]+""+recent+""+my[0]+""+my[1]);
+                    hs.add(""+my[0]+my[1]+my[0]+recent);
+                    hs.add(""+my[0]+recent+my[0]+my[1]);
                     my = new int[]{my[0],recent};
                 }
             }else{
                 int recent = my[1]-1;
                 if(check(recent)){
-                    hs.add(my[0]+""+my[1]+""+my[0]+""+recent);
-                    hs.add(my[0]+""+recent+""+my[0]+""+my[1]); 
+                    hs.add(""+my[0]+my[1]+my[0]+recent);
+                    hs.add(""+my[0]+recent+my[0]+my[1]); 
                     my = new int[]{my[0],recent};
                 }
             }
