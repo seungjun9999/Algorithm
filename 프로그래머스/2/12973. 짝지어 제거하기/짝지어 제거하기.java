@@ -5,16 +5,15 @@ class Solution
     public int solution(String s)
     {
         ArrayDeque<Character> dq = new ArrayDeque<>();
-        for(int i=0;i<s.length();i++) {
-            if(dq.isEmpty() || dq.peek() != s.charAt(i)){
-                dq.push(s.charAt(i));
-            }else {
+        
+        for(char c : s.toCharArray()) {
+            if(dq.isEmpty() || dq.peek() != c) {
+                dq.push(c);
+            } else {
                 dq.pop();
             }
         }
-        if(dq.isEmpty()){
-            return 1;
-        }
-        return 0;
+
+        return dq.isEmpty()? 1: 0;
     }
 }
