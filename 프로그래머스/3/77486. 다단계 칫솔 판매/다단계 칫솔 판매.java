@@ -30,11 +30,11 @@ class Solution {
         return answer.stream().mapToInt(Integer::intValue).toArray();
     }
     void dadan(String arr,int mon) {
-        if(!upper.containsKey(arr)) return;
-        if(mon<10){
-            upper.get(arr).pay+=mon;
-            return;
-        }   
+        if(!upper.containsKey(arr) || mon==0) return;
+        // if(mon<10){
+        //     upper.get(arr).pay+=mon;
+        //     return;
+        // }   
         upper.get(arr).pay += mon - (mon/10);
         dadan(upper.get(arr).name,mon/10);
     }
