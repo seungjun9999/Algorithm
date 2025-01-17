@@ -43,7 +43,7 @@ public class Main {
                 if (recent.cost > c) {
                     dp[recent.start + recent.len][c] = dp[recent.start][c];
                 } else {
-                    if ((recent.start == 0 || dp[recent.start][c] != 0) && c- recent.cost>=0) {
+                    if (recent.start == 0 || dp[recent.start][c] != 0) {
                         dp[recent.start + recent.len][c] = Math.max(dp[recent.start + recent.len][c], dp[recent.start][c - recent.cost] + recent.fun);
                     }
                 }
