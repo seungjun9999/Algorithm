@@ -17,21 +17,17 @@ class Solution {
         }
         dq.offer(edges[0][0]);
         int[] check = bfs();
-        System.out.println("처음"+check[1]);
         dq.offer(check[1]);
         int[] result = bfs();
         if (result[0] > 1) {
-            System.out.println(""+result[1]);
             return result[2];
         } else {
             dq.offer(result[1]);
             int[] answer = bfs();
-            if(answer[0]>1) {
-                System.out.println("2개??"+result[1]);
+            if (answer[0] > 1) {
                 return answer[2];
-            }else{
-                 System.out.println("1개"+result[1]);
-                return answer[2]-1;
+            } else {
+                return answer[2] - 1;
             }
         }
     }
