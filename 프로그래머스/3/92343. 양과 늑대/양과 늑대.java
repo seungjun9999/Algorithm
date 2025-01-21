@@ -2,44 +2,32 @@ import java.util.*;
 
 class Solution {
     static ArrayList<ArrayList<Integer>> list = new ArrayList<>();
-    static int maax = 0;
-
+    static int result = 0;
     public int solution(int[] info, int[][] edges) {
-
-        Set<Integer> pos = new HashSet<>();
-        int sheep = 0;
-        int wolf = 0;
-
-        for (int i = 0; i < info.length; i++) {
+        for(int i=0;i<info.length;i++) {
             list.add(new ArrayList<>());
         }
-
-        for (int[] num : edges) {
-            list.get(num[0]).add(num[1]);
+        for(int[] edge: edges) {
+            list.get(edge[0]).add(edge[1]);
         }
-
-        pos.add(0);
-        dfs(0, pos, sheep, wolf, info);
-        return maax;
+        bfs(0,0,0,new HashSet<Integer>(),info);
+        return result;
     }
-
-    void dfs(int recent, Set<Integer> pos, int sheep, int wolf, int[] info) {
-
-        if (info[recent] == 0) {
-            sheep += 1;
-        } else {
-            wolf += 1;
+    
+    void bfs(int recent, int sheep, int wolf, HashSet<Integer> set,int[] info) {
+        if(info[recent]==0) {
+            result = Math.max(result,++sheep);
+        }else{
+            wolf+=1;
         }
-        maax = Math.max(maax, sheep);
-        if (sheep <= wolf)
+        if(sheep<=wolf){
             return;
-
-        Set<Integer> newgo = new HashSet<>(pos);
-        newgo.addAll(list.get(recent));
-        newgo.remove(recent);
-
-        for (int a : newgo) {
-            dfs(a, newgo, sheep, wolf, info);
         }
+        set.addAll(list.get(recent));
+        for(int a : set) {
+            HashSet<Integer> visited = new HashSet<>(set);
+            visited.remove(a);
+            bfs(a,sheep,wolf,visited,info);
+        } 
     }
 }
