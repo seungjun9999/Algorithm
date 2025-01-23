@@ -1,26 +1,25 @@
 import java.util.*;
 
 class Solution {
+    static int n, select = 0, answer = 0;
     static int[] parent;
     public int solution(int n, int[][] costs) {
+        this.n = n;
         parent = new int[n];
         for(int i=0;i<n;i++) {
             parent[i] = i;
         }
-        Arrays.sort(costs,(o1,o2) -> o1[2]-o2[2]);
-        int select = 0;
-        int cost = 0;
-        for(int i=0;i<costs.length;i++) {
-            if(find(costs[i][0]) != find(costs[i][1])) {
-                select++;
-                cost += costs[i][2];
-                union(costs[i][0],costs[i][1]);
-            }
-            if(select == n-1) {
-                return cost;
+        Arrays.sort(costs,(o1,o2) -> o1[2] - o2[2]);
+        for(int[] cost : costs) {
+            if(find(cost[0]) != find(cost[1])) {
+                union(cost[0],cost[1]);
+                answer += cost[2];
+                if(++select == n-1) {
+                    break;
+                }
             }
         }
-        return 0;
+        return answer;
     }
     
     static int find(int x) {
@@ -31,7 +30,7 @@ class Solution {
         return parent[x];
     }
     
-    static void union(int x,int y) { 
+    static void union(int x,int y) {
         int root1 = find(x);
         int root2 = find(y);
         parent[root2] = root1;
