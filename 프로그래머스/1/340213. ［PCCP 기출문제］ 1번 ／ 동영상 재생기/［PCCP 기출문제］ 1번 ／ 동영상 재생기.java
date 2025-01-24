@@ -3,46 +3,27 @@ import java.util.*;
 class Solution {
     public String solution(String video_len, String pos, String op_start, String op_end, String[] commands) {
         StringBuilder sb = new StringBuilder();
-        String[] lastlen = video_len.split(":");
-        String[] poslen = pos.split(":");
-        String[] opstartlen = op_start.split(":");
-        String[] opendlen = op_end.split(":");
-        int lastTime = Integer.parseInt(lastlen[0])*60 + Integer.parseInt(lastlen[1]);
-        int nowTime = Integer.parseInt(poslen[0])*60 + Integer.parseInt(poslen[1]);
-        int opStart = Integer.parseInt(opstartlen[0])*60 + Integer.parseInt(opstartlen[1]);
-        int opEnd = Integer.parseInt(opendlen[0])*60 + Integer.parseInt(opendlen[1]);
+        
+        int lastTime = convertToSeconds(video_len);
+        int nowTime = convertToSeconds(pos);
+        int opStart = convertToSeconds(op_start);
+        int opEnd = convertToSeconds(op_end);
+        
         if(nowTime >= opStart && nowTime <= opEnd) {
                 nowTime = opEnd;
         }
         for (String command : commands) {
-            if(nowTime >= opStart && nowTime <= opEnd) {
-                nowTime = opEnd;
-            }
-            if(command.equals("next")) {
-                nowTime += 10;
-                if(nowTime > lastTime) {
-                    nowTime = lastTime;
-                } 
-            } else{
-                nowTime -= 10;
-                if(nowTime<0) {
-                    nowTime = 0;
-                }
-            }
+            nowTime += command.equals("next") ? 10 : -10;
+            nowTime = Math.min(Math.max(0, nowTime), lastTime);
             if(nowTime >= opStart && nowTime <= opEnd) {
                 nowTime = opEnd;
             }
         }
-        String first = String.valueOf(nowTime/60);
-        String last = String.valueOf(nowTime%60);
-        if(first.length() == 1) {
-            first ="0"+first;
-        }
-        if(last.length() == 1) {
-            last = "0"+last;
-        }
-        sb.append(first).append(":").append(last);
-        System.out.println(lastTime);
-        return sb.toString();
+        return String.format("%02d:%02d", nowTime/60, nowTime%60);
+    }
+    
+    private int convertToSeconds(String time) {
+        String[] parts = time.split(":");
+        return Integer.parseInt(parts[0])*60 + Integer.parseInt(parts[1]);
     }
 }
