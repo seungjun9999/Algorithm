@@ -9,7 +9,7 @@ class Solution {
 
     public int solution(int[][] board) {
         n = board.length;
-        cost = new int[n][n][4];
+        cost = new int[n][n][4]; // 방향
         dq.offer(new int[] { 0, 0, 0 });
         dq.offer(new int[] { 0, 0, 1 });
         for (int i = 0; i < n; i++) {
