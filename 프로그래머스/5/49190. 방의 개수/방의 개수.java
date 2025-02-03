@@ -27,15 +27,15 @@ class Solution {
     static void goLine(int arrow) {
         now[0] = start[0] + dx[arrow];
         now[1] = start[1] + dy[arrow];
-        if (!hs.contains("" + now[0] +","+ now[1])) {
-            hs.add("" + now[0] +","+ now[1]);
+        if (!hs.contains(now[0] + "," + now[1])) {
+            hs.add(now[0] + "," + now[1]);
         } else {
-            if (!line.contains("" + start[0] +","+ start[1] +":"+ now[0] +","+ now[1]) && !line.contains("" + now[0] +","+ now[1] +":"+ start[0] + ","+start[1])) {
+            if (!line.contains(start[0] + "," + start[1] + ":" + now[0] + "," + now[1]) && !line.contains("" + now[0] + "," + now[1] + ":" + start[0] + "," + start[1])) {
                 answer++;
             }
         }
-        line.add("" + start[0] +","+ start[1] +":"+ now[0] +","+ now[1]);
-        line.add("" + now[0] +","+ now[1] +":"+ start[0] +","+ start[1]);
+        line.add(start[0] + "," + start[1] + ":" + now[0] + "," + now[1]);
+        line.add(now[0] + "," + now[1] + ":" + start[0] + "," + start[1]);
         start = now.clone();
     }
 }
