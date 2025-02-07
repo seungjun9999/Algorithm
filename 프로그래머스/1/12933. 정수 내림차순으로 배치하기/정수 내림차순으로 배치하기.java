@@ -1,17 +1,14 @@
 import java.util.*;
+import java.io.*;
 
 class Solution {
     public long solution(long n) {
-        long answer = 0;
-        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
-        while(n>0) {
-            pq.offer((int)(n%10));
-            n/=10;
+        StringBuilder sb= new StringBuilder();
+        String[] answer = Long.toString(n).split("");
+        Arrays.sort(answer,Collections.reverseOrder());
+        for(String s : answer) {
+            sb.append(s);
         }
-        while(!pq.isEmpty()) {
-            answer += pq.poll();
-            answer*=10;
-        }
-        return answer/10;
+        return Long.parseLong(sb.toString());
     }
 }
