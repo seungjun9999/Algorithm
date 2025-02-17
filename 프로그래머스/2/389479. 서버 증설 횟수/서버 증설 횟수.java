@@ -14,11 +14,13 @@ class Solution {
                     dq.offer(k);
                 }
             }
+            // 더 좋은 방법이 있을텐데..
             int n = dq.size();
             for (int i = 0; i < n; i++) {
                 int now = dq.poll();
                 now--;
-                if (now != 0) dq.offer(now);
+                if (now != 0)
+                    dq.offer(now);
             }
         }
         return result;
