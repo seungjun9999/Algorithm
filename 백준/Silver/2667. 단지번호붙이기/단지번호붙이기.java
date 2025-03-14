@@ -2,69 +2,52 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-
-    static int[][] num;
-    static boolean[][] visited;
-    static int n, x, y, m = 0;
+    static char[][] num;
+    static int n;
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, 1, 0, -1};
-    static ArrayList<int[]> list = new ArrayList<>();
-    static ArrayList<Integer>cnt = new ArrayList<>();
-    static Queue<int[]> q = new ArrayDeque<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        ArrayDeque<int[]> dq = new ArrayDeque<>();
+        ArrayList<Integer> list = new ArrayList<>();
         n = Integer.parseInt(br.readLine());
-        num = new int[n][n];
-        visited = new boolean[n][n];
+        num = new char[n][n];
+        int answer = 0;
         for (int i = 0; i < n; i++) {
             String arr = br.readLine();
+            num[i] = arr.toCharArray();
+        }
+        for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                num[i][j] = Integer.parseInt(String.valueOf(arr.charAt(j)));
-                if (num[i][j] == 1) {
-                    list.add(new int[]{i, j});
+                if (num[i][j] == '1') {
+                    dq.offer(new int[]{i, j});
+                    num[i][j] = '0';
+                    int cnt = 1;
+                    answer++;
+                    while (!dq.isEmpty()) {
+                        int[] now = dq.poll();
+                        for (int k = 0; k < 4; k++) {
+                            int x = dx[k] + now[0];
+                            int y = dy[k] + now[1];
+                            if (!check(x, y) || num[x][y] == '0') continue;
+                            dq.offer(new int[]{x, y});
+                            num[x][y] = '0';
+                            cnt++;
+                        }
+                    }
+                    list.add(cnt);
                 }
             }
         }
-
-        for (int i = 0; i < list.size(); i++) {
-            int[] now = list.get(i);
-            if (!visited[now[0]][now[1]]) {
-                visited[now[0]][now[1]] = true;
-                q.offer(now);
-                cnt.add(bfs());
-            }
-        }
-
-        Collections.sort(cnt);
-        System.out.println(cnt.size());
-        for(int i=0;i<cnt.size();i++){
-            System.out.println(cnt.get(i));
+        Collections.sort(list);
+        System.out.println(answer);
+        for (int a : list) {
+            System.out.println(a);
         }
     }
 
-    static int bfs() {
-        int plus = 0;
-
-        while (!q.isEmpty()) {
-            int[] where = q.poll();
-            plus++;
-            for (int i = 0; i < 4; i++) {
-                x = dx[i] + where[0];
-                y = dy[i] + where[1];
-                if (check(x, y) && !visited[x][y] && num[x][y] == 1) {
-                    visited[x][y] = true;
-                    q.offer(new int[]{x, y});
-                }
-            }
-        }
-        return plus;
-    }
-
-    static boolean check(int a, int b) {
-        if (a >= 0 && a < n && b >= 0 && b < n) {
-            return true;
-        }
-        return false;
+    static private boolean check(int x, int y) {
+        return x >= 0 && x < n && y >= 0 && y < n;
     }
 }
