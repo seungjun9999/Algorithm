@@ -29,14 +29,13 @@ public class Main {
             }
         }
 
-        while (true) {
-            if (!chain()) break;
+        while (true) {            
             if(warm()==0) {
                 System.out.println(0);
                 return;
             }
             answer++;
-
+            if (!chain()) break;
         }
         System.out.println(answer);
     }
