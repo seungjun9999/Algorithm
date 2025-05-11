@@ -6,6 +6,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
         int k = Integer.parseInt(st.nextToken());
         int c = Integer.parseInt(st.nextToken());
         int[] num = new int[n + 1];
@@ -29,18 +30,18 @@ public class Main {
         }
         int cnt = n;
         while (cnt >= 1) {
-            if(dp[cnt] == dp[cnt-1] + num[cnt]) {
-                cnt-=1;
-            }else {
-                cnt-=k;
-                list.add(cnt+1);
+            if (dp[cnt] == dp[cnt - 1] + num[cnt]) {
+                cnt -= 1;
+            } else {
+                cnt -= k;
+                list.add(cnt + 1);
             }
         }
         Collections.sort(list);
-        System.out.println(dp[n]);
-        System.out.println(list.size());
+        sb.append(dp[n]).append("\n").append(list.size()).append("\n");
         for (int a : list) {
-            System.out.print(a + " ");
+            sb.append(a).append(" ");
         }
+        System.out.print(sb);
     }
 }
