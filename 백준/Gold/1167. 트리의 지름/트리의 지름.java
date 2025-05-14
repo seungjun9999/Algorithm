@@ -25,10 +25,8 @@ public class Main {
             }
         }
         int[] result = bfs(1);
-        int cnt = 2;
-        while (cnt-- > 0) {
-            result = bfs(result[0]);
-        }
+        result = bfs(result[0]);
+        
         System.out.print(result[1]);
     }
 
