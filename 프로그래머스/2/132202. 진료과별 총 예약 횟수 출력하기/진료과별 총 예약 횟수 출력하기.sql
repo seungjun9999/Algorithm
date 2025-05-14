@@ -1,5 +1,5 @@
-SELECT MCDP_CD as 진료과코드 , count(*) as 5월예약건수
+SELECT MCDP_CD AS "진료과코드" , COUNT(APNT_NO) AS "5월예약건수"
 FROM APPOINTMENT
-where APNT_YMD like "2022-05%"
-group by 1
-order by 2, 1
+WHERE APNT_YMD LIKE "2022-05%"
+GROUP BY MCDP_CD
+ORDER BY 2, 1
