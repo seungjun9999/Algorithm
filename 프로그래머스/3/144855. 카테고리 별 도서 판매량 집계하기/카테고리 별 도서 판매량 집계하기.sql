@@ -1,7 +1,6 @@
-select b.category as CATEGORY, sum(s.sales) as TOTAL_SALES
-# select *
-from book b
-join book_sales s on b.book_id = s.book_id
-where s.SALES_DATE like "2022-01%"
-group by category
-order by category
+SELECT CATEGORY, SUM(SALES) AS TOTAL_SALES
+FROM BOOK_SALES S
+JOIN BOOK B ON B.BOOK_ID = S.BOOK_ID
+WHERE SALES_DATE LIKE "2022-01%"
+GROUP BY B.CATEGORY
+ORDER BY 1
