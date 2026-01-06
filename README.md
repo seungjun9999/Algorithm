@@ -54,4 +54,13 @@
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/seungjun9999/Algorithm/tree/master/0001-two-sum) |
+| [0383-ransom-note](https://github.com/seungjun9999/Algorithm/tree/master/0383-ransom-note) |
+## String
+|  |
+| ------- |
+| [0383-ransom-note](https://github.com/seungjun9999/Algorithm/tree/master/0383-ransom-note) |
+## Counting
+|  |
+| ------- |
+| [0383-ransom-note](https://github.com/seungjun9999/Algorithm/tree/master/0383-ransom-note) |
 <!---LeetCode Topics End-->
